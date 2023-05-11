@@ -1,0 +1,43 @@
+{% extends 'my_app/base.html' %}
+
+{% block title %}
+    Login
+{% endblock %}
+
+{% block body %}
+    <div class="container mt-5">
+        <form class="form-signin" method="POST">
+            {% csrf_token %}
+            <h1 class="h3 mb-3 font-weight-normal text-center">
+                Log In
+            </h1>
+
+            {% for error in form.non_field_errors %}
+            <div class="alert alert-danger" role="alert">
+                {{ error }}
+            </div>
+            {% endfor %}
+
+            <div class="form-group mb-3">
+                <label for="inputCompany" class="sr-only">Company</label>
+                <input type="text" id="inputCompany" class="form-control" placeholder="Company" name="username" required autofocus>
+            </div>
+
+            <div class="form-group mb-3">
+                <label for="inputPassword" class="sr-only">Password</label>
+                <input type="password" id="inputPassword" class="form-control" placeholder="Password" name="password" required>
+            </div>
+
+            <div class="text-center mt-5">
+                <button class="btn btn-lg btn-primary" type="submit">Log In</button>
+            </div>
+
+            <div class="mt-5">
+                <p class="text-center mb-0">Don't have an account?</p>
+                <div class="d-flex justify-content-center mt-3">
+                    <a class="btn btn-sm btn-secondary" href="{% url 'register' %}">Register</a>
+                </div>
+            </div>
+        </form>
+    </div>
+{% endblock %}

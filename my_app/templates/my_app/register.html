@@ -1,0 +1,64 @@
+{% extends 'my_app/base.html' %}
+
+{% block title %}
+    Register
+{% endblock %}
+
+{% block body %}
+    <div class="container mt-5">
+        <form class="form-signin" method="POST">
+            {% csrf_token %}
+            <h1 class="h3 mb-3 font-weight-normal text-center">
+                Create an Account
+            </h1>
+
+            <div class="form-group mb-3">
+                <label for="inputUsername" class="sr-only">Company</label>
+                <input type="text" id="inputUsername" class="form-control {% if form.username.errors %}is-invalid{% endif %}" placeholder="Company" name="username" required autofocus>
+                {% for error in form.username.errors %}
+                <div class="invalid-feedback">
+                    {{ error }}
+                </div>
+                {% endfor %}
+            </div>
+
+            <div class="form-group mb-3">
+                <label for="inputEmail" class="sr-only">Email</label>
+                <input type="text" id="inputEmail" class="form-control" placeholder="Email" name="email" required autofocus>
+            </div>
+
+
+            <div class="form-group mb-3">
+                <label for="inputPassword1" class="sr-only">Password</label>
+                <input type="password" id="inputPassword1" class="form-control {% if form.password1.errors %}is-invalid{% endif %}" placeholder="Password" name="password1" required>
+                {% for error in form.password1.errors %}
+                <div class="invalid-feedback">
+                {{ error }}
+                </div>
+                {% endfor %}
+            </div>
+
+            <div class="form-group mb-3">
+                <label for="inputPassword2" class="sr-only">Confirm Password</label>
+                <input type="password" id="inputPassword2" class="form-control {% if form.password2.errors %}is-invalid{% endif %}" placeholder="Confirm Password" name="password2" required>
+                {% for error in form.password2.errors %}
+                <div class="invalid-feedback">
+                {{ error }}
+                </div>
+                {% endfor %}
+            </div>
+
+
+            <div class="text-center mt-5">
+                <button class="btn btn-lg btn-primary" type="submit">Create Account</button>
+            </div>
+
+            <div class="mt-5">
+                <p class="text-center mb-0">Already have an account?</p>
+                <div class="d-flex justify-content-center mt-3">
+                    <a class="btn btn-sm btn-secondary" href="{% url 'login' %}">Log In</a>
+                </div>
+            </div>
+        </form>
+    </div>
+{% endblock %}
