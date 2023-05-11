@@ -141,6 +141,7 @@ key are those images which are pulled from a public Docker registry,
 such as Docker Hub, Google Container Registry, Amazon Elastic Container Registry
 or Azure Container Registry.
 
+<br>
 
 ## Run tests
 
