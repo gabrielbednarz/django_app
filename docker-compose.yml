@@ -3,7 +3,7 @@ version: '3.9'
 services:  # Literal, not user-defined name.
   web:  # Give a suggestive name of the service. The rest keys/configuration options are literal, not user-defined names.
     build: .  # This builds a Docker image based on the Dockerfile located in the current directory (represented
-    # by the dot)
+    # by the dot).
 
     command: python manage.py runserver 0.0.0.0:8000  # Instead of CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
     volumes:                                          # in Dockerfile. 8000 refers to the container port. 0.0.0.0 means
