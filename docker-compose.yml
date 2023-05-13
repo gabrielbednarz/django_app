@@ -2,15 +2,13 @@ version: '3.9'
 
 services:  # Literal, not user-defined name.
   web:  # Give a suggestive name of the service. The rest keys/configuration options are literal, not user-defined names.
-    build: .
-
-    # In the context of a docker-compose.yml file, the dot after build represents the current directory,
-    # which is used as the build context for the Docker image. It tells Docker Compose to look for a Dockerfile
-    # in the current directory to build the image for the service. The build context is the set of files
-    # and directories that are available to the COPY and ADD instructions in the Dockerfile.
+    build: .  # This builds a Docker image based on the Dockerfile located in the current directory (represented
+    # by the dot)
 
     command: python manage.py runserver 0.0.0.0:8000  # Instead of CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
     volumes:                                          # in Dockerfile. 8000 refers to the container port. 0.0.0.0 means
-      - .:/app                                        # all available IP addresses on your local machine.
-    ports:
+      - .:/app                                        # all available IP addresses on your local machine. 8000 because
+    ports:                                            # of python manage.py runserver 8000.
       - "8000:8000"  # Instead of EXPOSE 8000 in Dockerfile. The first 8000 determines the browser's address.
+
+    # volumes maps the content of this Django project (denoted by the dot) into the directory named app in the container.
