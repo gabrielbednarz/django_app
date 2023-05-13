@@ -8,11 +8,13 @@ Register companies and manage employee information with a CRUD feature.
 - [Docker Desktop with Docker Compose](https://docs.docker.com/compose/install/)
 - Ensure that Docker Desktop is running if you're on Windows or Mac. 
 On Linux, ensure that the Docker service is running.
+<br>
 
 ## Run without Docker
 
 To run the project without Docker, you will need to perform database migrations 
 and create a superuser account:
+<br>
 
 1. Run the migrations: 
 
@@ -20,6 +22,7 @@ and create a superuser account:
 python manage.py makemigrations 
 python manage.py migrate
 ```
+<br>
 
 2. Create a superuser account and start the Django server:
 
@@ -27,8 +30,10 @@ python manage.py migrate
 python manage.py createsuperuser
 python manage.py runserver
 ```
+<br>
 
 3. Access the application at http://localhost:8000.
+<br>
 
 ### How to delete data
 
@@ -54,6 +59,7 @@ user.delete()  # To delete a specific user.
 exit()  # To exit the Django shell.
 ```
 
+<br>
 
 ## Run with Docker
 
@@ -70,6 +76,7 @@ a superuser account within the Docker container.
 docker-compose build  # Builds the Docker image.
 docker-compose up  # Starts the Docker container.
 ```
+<br>
 
 2. Access the Docker container's command line:
 
@@ -77,6 +84,7 @@ docker-compose up  # Starts the Docker container.
 docker ps  # Returns the ID of your running container.
 docker exec -it <container_id> bash  # Replace <container_id> with the ID from the previous command.
 ```
+<br>
 
 3. Inside the Docker container's command line, run the following commands:
 
@@ -89,14 +97,18 @@ python manage.py createsuperuser
 The command `python manage.py runserver` is not necessary because
 it is used in the `docker-compose.yml` file, under the command key.
 
+<br>
+
 4. You can access the Docker container's web server at http://localhost:8000.
 8000 refers to the first part of the "8000:8000" string inside the ports key
 of 'docker-compose.yml'.
+<br>
 
 Note. The Docker container has its own isolated environment, 
 including its own database. So, if you create a superuser outside Docker, 
 this superuser won't exist in the Docker environment.
 
+<br>
 
 ### Teardown
 
@@ -129,6 +141,7 @@ key are those images which are pulled from a public Docker registry,
 such as Docker Hub, Google Container Registry, Amazon Elastic Container Registry
 or Azure Container Registry.
 
+<br>
 
 ## Run tests
 
